@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Family Club 2025 - Inscription</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f5f0fa 0%, #fef0f5 100%);
+      min-height: 100vh;
+      padding: 20px;
+      color: #333;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(107, 44, 145, 0.12);
+    }
+
+    /* Header */
+    .header {
+      background: linear-gradient(135deg, #6B2C91 0%, #8B3FA8 100%);
+      color: white;
+      padding: 40px 30px;
+      text-align: center;
+      position: relative;
+    }
+
+    .header::before {
+      content: "🌴";
+      font-size: 48px;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .header h1 {
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .header p {
+      font-size: 15px;
+      opacity: 0.9;
+    }
+
+    /* Body */
+    .body {
+      padding: 40px 30px;
+    }
+
+    .info-box {
+      background: #f5f0fa;
+      border-left: 4px solid #6B2C91;
+      padding: 16px 20px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+      font-size: 14px;
+      color: #4a1c66;
+      line-height: 1.6;
+    }
+
+    .info-box strong {
+      color: #6B2C91;
+    }
+
+    /* Sections */
+    .section {
+      margin-bottom: 32px;
+    }
+
+    .section-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #6B2C91;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #f5f0fa;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-number {
+      background: #6B2C91;
+      color: white;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    /* Form */
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      color: #555;
+      margin-bottom: 6px;
+    }
+
+    .form-group label .required {
+      color: #E2007A;
+      margin-left: 4px;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1.5px solid #e0d4ec;
+      border-radius: 8px;
+      font-size: 14px;
+      font-family: inherit;
+      background: white;
+      transition: all 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: #6B2C91;
+      box-shadow: 0 0 0 3px rgba(107, 44, 145, 0.1);
+    }
+
+    .form-group input[readonly] {
+      background: #f8f5fb;
+      color: #6B2C91;
+      font-weight: 500;
+      cursor: not-allowed;
+    }
+
+    /* Préférences (3 lignes) */
+    .preference-row {
+      display: grid;
+      grid-template-columns: 60px 1fr;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .pref-rank {
+      background: #6B2C91;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 13px;
+      text-align: center;
+    }
+
+    .pref-rank.rank-2 {
+      background: #8B3FA8;
+    }
+
+    .pref-rank.rank-3 {
+      background: #B25BC4;
+    }
+
+    /* Submit */
+    .submit-btn {
+      width: 100%;
+      background: linear-gradient(135deg, #E2007A 0%, #FF1493 100%);
+      color: white;
+      border: none;
+      padding: 16px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 20px;
+      font-family: inherit;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(226, 0, 122, 0.3);
+    }
+
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+
+    /* Footer */
+    .footer {
+      background: #faf8fc;
+      padding: 16px 30px;
+      text-align: center;
+      font-size: 12px;
+      color: #888;
+      border-top: 1px solid #f0e8f5;
+    }
+
+    /* Confirmation message */
+    .success-message {
+      display: none;
+      background: #e8f5e9;
+      border: 2px solid #4caf50;
+      color: #2e7d32;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .success-message h2 {
+      margin-bottom: 10px;
+      font-size: 22px;
+    }
+
+    .success-message .check {
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+
+    /* JSON output (pour debug / intégration n8n) */
+    .json-output {
+      display: none;
+      background: #1e1e1e;
+      color: #00ff88;
+      padding: 20px;
+      border-radius: 8px;
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      margin-top: 20px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .header h1 {
+        font-size: 22px;
+      }
+
+      .body {
+        padding: 25px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- HEADER -->
+    <div class="header">
+      <h1>Family Club 2025</h1>
+      <p>Formulaire d'inscription - Phase 1</p>
+    </div>
+
+    <!-- BODY -->
+    <div class="body">
+
+      <!-- Message de succès (caché au début) -->
+      <div class="success-message" id="successMessage">
+        <div class="check">✓</div>
+        <h2>Demande enregistrée !</h2>
+        <p>Vous recevrez une confirmation par email avant le 03/06.</p>
+      </div>
+
+      <!-- Le vrai formulaire -->
+      <form id="familyClubForm">
+
+        <div class="info-box">
+          📅 <strong>Date limite d'inscription :</strong> 23 mai 2025<br>
+          🏠 <strong>26 maisons</strong> dans 5 villes (Mdiq, Cabo Negro, Assilah, Plage des Nations, Agadir, Taghazout)<br>
+          ✏️ Choisissez 3 destinations et 3 périodes <strong>par ordre de préférence</strong>
+        </div>
+
+        <!-- SECTION 1 : Identité -->
+        <div class="section">
+          <div class="section-title">
+            <span class="section-number">1</span>
+            Vos informations
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Matricule <span class="required">*</span></label>
+              <input type="text" id="matricule" name="matricule" readonly value="M001">
+            </div>
+            <div class="form-group">
+              <label>Email professionnel <span class="required">*</span></label>
+              <input type="email" id="email" name="email" required placeholder="prenom.nom@inwi.ma">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Nom <span class="required">*</span></label>
+              <input type="text" id="nom" name="nom" required>
+            </div>
+            <div class="form-group">
+              <label>Prénom <span class="required">*</span></label>
+              <input type="text" id="prenom" name="prenom" required>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION 2 : Choix des destinations -->
+        <div class="section">
+          <div class="section-title">
+            <span class="section-number">2</span>
+            Vos 3 destinations préférées
+          </div>
+
+          <div class="preference-row">
+            <div class="pref-rank">1er</div>
+            <select name="destination1" required>
+              <option value="">-- Choisissez votre 1er choix --</option>
+              <option value="L01">🌊 Oceanica - Mdiq (Catégorie B)</option>
+              <option value="L02">🌊 Marina Beach - Mdiq (Catégorie B)</option>
+              <option value="L03">🌊 Collina Smir - Mdiq (Catégorie B)</option>
+              <option value="L04">🌊 Cabo Huerto - Cabo Negro (Catégorie A)</option>
+              <option value="L05">🌊 Les Dunes - Cabo Negro (Catégorie A)</option>
+              <option value="L06">🏖️ Prestigia - Plage des Nations (Catégorie B)</option>
+              <option value="L07">🏖️ Beralmar - Assilah (Catégorie A)</option>
+              <option value="L08">☀️ La Source - Taghazout (Catégorie C)</option>
+              <option value="L09">☀️ Tawenza - Taghazout (Catégorie C)</option>
+              <option value="L10">☀️ Taourirt - Taghazout (Catégorie C)</option>
+              <option value="L11">☀️ Hivernage - Agadir (Catégorie A)</option>
+            </select>
+          </div>
+
+          <div class="preference-row">
+            <div class="pref-rank rank-2">2ème</div>
+            <select name="destination2" required>
+              <option value="">-- Choisissez votre 2ème choix --</option>
+              <option value="L01">🌊 Oceanica - Mdiq (Catégorie B)</option>
+              <option value="L02">🌊 Marina Beach - Mdiq (Catégorie B)</option>
+              <option value="L03">🌊 Collina Smir - Mdiq (Catégorie B)</option>
+              <option value="L04">🌊 Cabo Huerto - Cabo Negro (Catégorie A)</option>
+              <option value="L05">🌊 Les Dunes - Cabo Negro (Catégorie A)</option>
+              <option value="L06">🏖️ Prestigia - Plage des Nations (Catégorie B)</option>
+              <option value="L07">🏖️ Beralmar - Assilah (Catégorie A)</option>
+              <option value="L08">☀️ La Source - Taghazout (Catégorie C)</option>
+              <option value="L09">☀️ Tawenza - Taghazout (Catégorie C)</option>
+              <option value="L10">☀️ Taourirt - Taghazout (Catégorie C)</option>
+              <option value="L11">☀️ Hivernage - Agadir (Catégorie A)</option>
+            </select>
+          </div>
+
+          <div class="preference-row">
+            <div class="pref-rank rank-3">3ème</div>
+            <select name="destination3" required>
+              <option value="">-- Choisissez votre 3ème choix --</option>
+              <option value="L01">🌊 Oceanica - Mdiq (Catégorie B)</option>
+              <option value="L02">🌊 Marina Beach - Mdiq (Catégorie B)</option>
+              <option value="L03">🌊 Collina Smir - Mdiq (Catégorie B)</option>
+              <option value="L04">🌊 Cabo Huerto - Cabo Negro (Catégorie A)</option>
+              <option value="L05">🌊 Les Dunes - Cabo Negro (Catégorie A)</option>
+              <option value="L06">🏖️ Prestigia - Plage des Nations (Catégorie B)</option>
+              <option value="L07">🏖️ Beralmar - Assilah (Catégorie A)</option>
+              <option value="L08">☀️ La Source - Taghazout (Catégorie C)</option>
+              <option value="L09">☀️ Tawenza - Taghazout (Catégorie C)</option>
+              <option value="L10">☀️ Taourirt - Taghazout (Catégorie C)</option>
+              <option value="L11">☀️ Hivernage - Agadir (Catégorie A)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- SECTION 3 : Choix des périodes -->
+        <div class="section">
+          <div class="section-title">
+            <span class="section-number">3</span>
+            Vos 3 périodes préférées
+          </div>
+
+          <div class="preference-row">
+            <div class="pref-rank">1er</div>
+            <select name="periode1" required>
+              <option value="">-- Choisissez votre 1ère période --</option>
+              <option value="S01">Semaine 1 : 22/06 → 29/06</option>
+              <option value="S02">Semaine 2 : 29/06 → 06/07</option>
+              <option value="S03">Semaine 3 : 06/07 → 13/07</option>
+              <option value="S04">Semaine 4 : 13/07 → 20/07</option>
+              <option value="S05">Semaine 5 : 20/07 → 27/07</option>
+              <option value="S06">Semaine 6 : 27/07 → 03/08</option>
+              <option value="S07">Semaine 7 : 03/08 → 10/08</option>
+              <option value="S08">Semaine 8 : 10/08 → 17/08</option>
+              <option value="S09">Semaine 9 : 17/08 → 24/08</option>
+              <option value="S10">Semaine 10 : 24/08 → 31/08</option>
+              <option value="S11">Semaine 11 : 31/08 → 07/09</option>
+              <option value="S12">Semaine 12 : 07/09 → 14/09</option>
+              <option value="S13">Semaine 13 : 14/09 → 21/09</option>
+            </select>
+          </div>
+
+          <div class="preference-row">
+            <div class="pref-rank rank-2">2ème</div>
+            <select name="periode2" required>
+              <option value="">-- Choisissez votre 2ème période --</option>
+              <option value="S01">Semaine 1 : 22/06 → 29/06</option>
+              <option value="S02">Semaine 2 : 29/06 → 06/07</option>
+              <option value="S03">Semaine 3 : 06/07 → 13/07</option>
+              <option value="S04">Semaine 4 : 13/07 → 20/07</option>
+              <option value="S05">Semaine 5 : 20/07 → 27/07</option>
+              <option value="S06">Semaine 6 : 27/07 → 03/08</option>
+              <option value="S07">Semaine 7 : 03/08 → 10/08</option>
+              <option value="S08">Semaine 8 : 10/08 → 17/08</option>
+              <option value="S09">Semaine 9 : 17/08 → 24/08</option>
+              <option value="S10">Semaine 10 : 24/08 → 31/08</option>
+              <option value="S11">Semaine 11 : 31/08 → 07/09</option>
+              <option value="S12">Semaine 12 : 07/09 → 14/09</option>
+              <option value="S13">Semaine 13 : 14/09 → 21/09</option>
+            </select>
+          </div>
+
+          <div class="preference-row">
+            <div class="pref-rank rank-3">3ème</div>
+            <select name="periode3" required>
+              <option value="">-- Choisissez votre 3ème période --</option>
+              <option value="S01">Semaine 1 : 22/06 → 29/06</option>
+              <option value="S02">Semaine 2 : 29/06 → 06/07</option>
+              <option value="S03">Semaine 3 : 06/07 → 13/07</option>
+              <option value="S04">Semaine 4 : 13/07 → 20/07</option>
+              <option value="S05">Semaine 5 : 20/07 → 27/07</option>
+              <option value="S06">Semaine 6 : 27/07 → 03/08</option>
+              <option value="S07">Semaine 7 : 03/08 → 10/08</option>
+              <option value="S08">Semaine 8 : 10/08 → 17/08</option>
+              <option value="S09">Semaine 9 : 17/08 → 24/08</option>
+              <option value="S10">Semaine 10 : 24/08 → 31/08</option>
+              <option value="S11">Semaine 11 : 31/08 → 07/09</option>
+              <option value="S12">Semaine 12 : 07/09 → 14/09</option>
+              <option value="S13">Semaine 13 : 14/09 → 21/09</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="submit-btn">
+          Soumettre ma demande
+        </button>
+
+      </form>
+
+      <!-- Sortie JSON pour démo / intégration n8n -->
+      <div class="json-output" id="jsonOutput"></div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      Direction des Ressources Humaines - inwi © 2025
+    </div>
+
+  </div>
+
+  <script>
+    // === LECTURE DU MATRICULE DEPUIS L'URL ===
+    // Si l'URL contient ?id=M005, on pré-remplit le champ matricule
+    const urlParams = new URLSearchParams(window.location.search);
+    const matriculeFromUrl = urlParams.get('id');
+    if (matriculeFromUrl) {
+      document.getElementById('matricule').value = matriculeFromUrl;
+    }
+
+    // === VALIDATION : empêcher de choisir 2 fois la même destination ===
+    const destSelects = document.querySelectorAll('select[name^="destination"]');
+    destSelects.forEach(sel => {
+      sel.addEventListener('change', () => {
+        const valeurs = Array.from(destSelects).map(s => s.value).filter(v => v);
+        const uniques = new Set(valeurs);
+        if (valeurs.length !== uniques.size) {
+          alert("⚠️ Vous avez choisi 2 fois la même destination. Veuillez choisir 3 destinations différentes.");
+          sel.value = "";
+        }
+      });
+    });
+
+    // === VALIDATION : empêcher de choisir 2 fois la même période ===
+    const perSelects = document.querySelectorAll('select[name^="periode"]');
+    perSelects.forEach(sel => {
+      sel.addEventListener('change', () => {
+        const valeurs = Array.from(perSelects).map(s => s.value).filter(v => v);
+        const uniques = new Set(valeurs);
+        if (valeurs.length !== uniques.size) {
+          alert("⚠️ Vous avez choisi 2 fois la même période. Veuillez choisir 3 périodes différentes.");
+          sel.value = "";
+        }
+      });
+    });
+
+    // === SOUMISSION DU FORMULAIRE ===
+    document.getElementById('familyClubForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      // Construction de l'objet à envoyer
+      const formData = new FormData(this);
+      const data = {
+        matricule: formData.get('matricule'),
+        nom: formData.get('nom'),
+        prenom: formData.get('prenom'),
+        email: formData.get('email'),
+        choix_destinations: [
+          formData.get('destination1'),
+          formData.get('destination2'),
+          formData.get('destination3')
+        ],
+        choix_periodes: [
+          formData.get('periode1'),
+          formData.get('periode2'),
+          formData.get('periode3')
+        ],
+        timestamp: new Date().toISOString()
+      };
+
+      console.log("📤 Données soumises :", data);
+
+      // ============================================================
+      // ICI : remplacer par l'envoi vers ton webhook n8n
+      // ============================================================
+      // Exemple :
+      // const response = await fetch('https://ton-n8n.com/webhook/family-club', {
+      //   method: 'POST',
+      //   headers: {'Content-Type': 'application/json'},
+      //   body: JSON.stringify(data)
+      // });
+
+      // Pour la démo : on affiche juste le JSON
+      document.getElementById('jsonOutput').textContent =
+        "📤 Données qui seraient envoyées au webhook n8n :\n\n" +
+        JSON.stringify(data, null, 2);
+      document.getElementById('jsonOutput').style.display = 'block';
+
+      // Affiche le message de succès
+      this.style.display = 'none';
+      document.getElementById('successMessage').style.display = 'block';
+
+      // Scroll vers le haut pour voir le message
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    });
+  </script>
+</body>
+</html>
